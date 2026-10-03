@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Stunt Road</title>
+<meta name="theme-color" content="#1B1F4B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+
 <style>
 :root{--ink:#1B1F4B;--teal:#0E7C7B;--gold:#F7B32B;--red:#E63946;--paper:#FFF6DD}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;touch-action:none}
@@ -1664,6 +1671,13 @@ game.T = buildLevel(1); game.car = newCar(curVeh()); game.camX = 0; game.camY = 
   window.__demo = setInterval(() => { if (game.state === 'title') { game.camX += 1.6; if (game.camX > 1600) game.camX = 0; game.camY = game.T.height(game.camX + 200) - 260; game.car.x = game.camX + 220; game.car.y = game.T.height(game.car.x) - game.car.v.bottom - 1; game.car.a = Math.atan(game.T.slope(game.car.x)); game.car.spin += .3; game.car.spinB += .3; } }, 16); }
 requestAnimationFrame(loop);
 
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('service-worker.js').catch(function () {});
+  });
+}
 </script>
 </body>
 </html>
